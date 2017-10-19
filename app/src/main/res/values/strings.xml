@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BaseStructure</string>
+    <string name="brand_text">Car</string>
+    <string name="year_text">Year</string>
+    <string name="color_text">Color</string>
+
+</resources>
