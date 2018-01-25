@@ -8,67 +8,81 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.om.basestructure.R;
-import com.example.om.basestructure.data.RVItemData;
+import com.example.om.basestructure.model.ToDo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by om on 10/17/17.
  */
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RVViewHolder> {
+public class RecyclerViewAdapter extends BaseRecyclerViewAdapter {
 
-    private RVItemData mRVItemData;
-    final private ListItemClickListener mOnClickListener;
-
-    public interface ListItemClickListener {
-        void onListItemClick(int clickedItemIndex);
-    }
+    private List<ToDo> mOriginItems;
 
 
-    public RecyclerViewAdapter(RVItemData rVItemData, ListItemClickListener listener) {
-        mRVItemData = rVItemData;
-        mOnClickListener = listener;
+    public RecyclerViewAdapter(List<ToDo> toDoList, ListItemClickListener listener) {
+        super(listener);
+        mOriginItems = toDoList;
     }
 
     @Override
     public RecyclerViewAdapter.RVViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_single_row, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.to_do_single_row, parent, false);
         return new RVViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(RVViewHolder holder, int position) {
-        String currentBrand = mRVItemData.getBrand()[position];
-        holder.brand.setText(currentBrand);
-        String currentYear = mRVItemData.getYear()[position];
-        holder.year.setText(currentYear);
-        String currentColor = mRVItemData.getColor()[position];
-        holder.color.setText(currentColor);
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+        super.onBindViewHolder(holder, position);
+        RVViewHolder rvViewHolder = (RVViewHolder) holder;
+        Log.e("RVAdapter LOG", "looped " + position);
+        String toDoStr = mOriginItems.get(position).getToDo();
+        rvViewHolder.toDo.setText(toDoStr);
+        String descriptionStr = mOriginItems.get(position).getDescription();
+        rvViewHolder.description.setText(descriptionStr);
+        int priority = mOriginItems.get(position).getPriority();
+        rvViewHolder.priority.setText(priority);
 
+
+    }
+
+    public void filter(String searchStr, List<ToDo> toDoList) {
+        mOriginItems = toDoList;
+        notifyDataSetChanged();
+        List<ToDo> filteredList = new ArrayList<>();
+        for (ToDo mOriginItem : mOriginItems) {
+            if (mOriginItem.getToDo().toLowerCase().contains(searchStr) ||
+                    mOriginItem.getDescription().toLowerCase().contains(searchStr)
+                    || String.valueOf(mOriginItem.getPriority()).toLowerCase().contains(searchStr)) {
+                filteredList.add(mOriginItem);
+            }
+        }
+        mOriginItems = filteredList;
+        notifyDataSetChanged();
+    }
+
+    public void refreshItems(List<ToDo> items) {
+        mOriginItems = items;
+        notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        return mRVItemData.getBrand().length;
+        return mOriginItems.size();
     }
 
-    public class RVViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private TextView brand;
-        private TextView year;
-        private TextView color;
+    public class RVViewHolder extends BaseViewHolder {
+        public TextView toDo;
+        public TextView description;
+        public TextView priority;
 
         public RVViewHolder(View itemView) {
             super(itemView);
-            brand = (TextView) itemView.findViewById(R.id.brand);
-            year = (TextView) itemView.findViewById(R.id.year);
-            color = (TextView) itemView.findViewById(R.id.color);
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View v) {
-            Log.i("TAG", "onClick position: " + getAdapterPosition() + ", id: " + getItemId());
-            long clickedPosition = getItemId();
-            mOnClickListener.onListItemClick((int) clickedPosition);
+            toDo = (TextView) itemView.findViewById(R.id.to_do);
+            description = (TextView) itemView.findViewById(R.id.year);
+            priority = (TextView) itemView.findViewById(R.id.color);
         }
     }
 }

@@ -3,5 +3,29 @@
     <string name="brand_text">Car</string>
     <string name="year_text">Year</string>
     <string name="color_text">Color</string>
+    <string name="title_activity_second">SecondActivity</string>
+    <string name="search_hint">Search</string>
+    <string name="leave_app_dialog_msg">Do you want to leave the application?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="unsaved_changes_dialog">Discard your changes and quit editing?</string>
+    <string name="product_name">product</string>
+    <string name="product_description">description</string>
+    <string name="product_priority">priority</string>
+    <string name="save">Save</string>
+    <string name="row_is_clicked">Row is clicked</string>
+    <string name="fragment_unsaved_data">You have unsaved data, would you like to leave without saving?</string>
+    <string name="to_do">To do</string>
+    <string name="category_overview">Overvue</string>
+    <string name="hint_to_do">To Do</string>
+    <string name="hint_to_do_description">Description</string>
+    <string name="priority_string">Priority</string>
+    <string name="high_priority">High</string>
+    <string name="medium_priority">Medium</string>
+    <string name="low_priority">Low</string>
+    <string name="when_string">When</string>
+    <string name="calendar">Calendar</string>
+    <string name="where_string">Where</string>
+    <string name="location">Location</string>
 
 </resources>

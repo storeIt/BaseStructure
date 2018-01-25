@@ -4,7 +4,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.om.basestructure.MainActivity">
+    tools:context="com.example.om.basestructure.ui.screen.MainActivity">
 
     <ScrollView
         android:id="@+id/fragment_container"
@@ -14,18 +14,5 @@
 
     </ScrollView>
 
-    <!--<fragment-->
-    <!--android:id="@+id/rv_fragment"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:name="com.example.om.basestructure.RVFragment"-->
-    <!--tools:layout="@layout/fragment_rv" />-->
-
-    <!--<fragment-->
-    <!--android:id="@+id/rv_details_fragment"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:name="com.example.om.basestructure.RVDetailsFragment"-->
-    <!--tools:layout="@layout/fragment_rvdetails" />-->
 
 </FrameLayout>

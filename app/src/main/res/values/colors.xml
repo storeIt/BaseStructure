@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#F0514B</color>
+    <color name="colorPrimaryDark">#C0403C</color>
+    <color name="colorPrimaryLight">#C5CAE9</color>
+    <color name="colorAccent">#F0514B</color>
+    <color name="colorWhite">#FFF</color>
+
+
+    <color name="carDetailsColorPrimary">#2D3640</color>
+    <color name="carDetailsColorPrimaryDark">#394450</color>
+
+    <color name="material_red">#E74C3C</color>
+    <color name="material_orange">#E67E22</color>
+    <color name="material_yellow">#F1C40F</color>
 </resources>
