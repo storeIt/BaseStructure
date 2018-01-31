@@ -80,7 +80,7 @@ public class RecyclerViewAdapter extends BaseRecyclerViewAdapter {
 
         public RVViewHolder(View itemView) {
             super(itemView);
-            toDo = (TextView) itemView.findViewById(R.id.to_do);
+            toDo = (TextView) itemView.findViewById(R.id.tv_to_do_single_row);
             description = (TextView) itemView.findViewById(R.id.year);
             priority = (TextView) itemView.findViewById(R.id.color);
         }
