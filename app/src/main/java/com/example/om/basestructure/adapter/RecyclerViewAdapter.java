@@ -43,7 +43,7 @@ public class RecyclerViewAdapter extends BaseRecyclerViewAdapter {
         String descriptionStr = mOriginItems.get(position).getDescription();
         rvViewHolder.description.setText(descriptionStr);
         int priority = mOriginItems.get(position).getPriority();
-        rvViewHolder.priority.setText(priority);
+        rvViewHolder.priority.setText(String.valueOf(priority));
 
 
     }
@@ -81,8 +81,8 @@ public class RecyclerViewAdapter extends BaseRecyclerViewAdapter {
         public RVViewHolder(View itemView) {
             super(itemView);
             toDo = (TextView) itemView.findViewById(R.id.tv_to_do_single_row);
-            description = (TextView) itemView.findViewById(R.id.year);
-            priority = (TextView) itemView.findViewById(R.id.color);
+            description = (TextView) itemView.findViewById(R.id.tv_to_do_description_single_row);
+            priority = (TextView) itemView.findViewById(R.id.tv_to_do_priority_single_row);
         }
     }
 }

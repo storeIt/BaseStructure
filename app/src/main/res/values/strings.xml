@@ -29,5 +29,8 @@
     <string name="location">Location</string>
     <string name="cancel">Cancel</string>
     <string name="set">Set</string>
+    <string name="clock">Clock</string>
+    <string name="time_picker_error_message">The time should be in the future!</string>
+    <string name="date_picker_error_message">The chosen date should be current or future!</string>
 
 </resources>

@@ -40,4 +40,5 @@ dependencies {
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.5.0'
     testCompile 'junit:junit:4.12'
     compile "com.daimajia.swipelayout:library:1.2.0@aar"
+    compile 'joda-time:joda-time:2.9.9'
 }

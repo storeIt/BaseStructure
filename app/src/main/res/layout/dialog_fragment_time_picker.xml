@@ -6,39 +6,50 @@
     android:layout_gravity="center"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/tv_dialog_time_picker_validation_error_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="@string/time_picker_error_message"
+        android:textColor="@color/colorWhite"
+        android:gravity="center"
+        android:visibility="gone" />
+
     <TimePicker
         android:id="@+id/time_picker_dialog_fragment"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn_cancel_time_picker_dialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/fab_margin"
             android:layout_gravity="center"
+            android:layout_margin="@dimen/fab_margin"
             android:background="@color/colorPrimary"
             android:text="@string/cancel"
             android:textColor="@color/colorWhite" />
 
         <Button
-            android:id="@+id/btn_save_time_dialog"
+            android:id="@+id/btn_set_time_dialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/fab_margin"
             android:layout_gravity="center"
+            android:layout_margin="@dimen/fab_margin"
             android:background="@color/colorPrimary"
-            android:text="@string/save"
+            android:text="@string/set"
             android:textColor="@color/colorWhite" />
 
-
     </LinearLayout>
+
 
 </LinearLayout>
 
