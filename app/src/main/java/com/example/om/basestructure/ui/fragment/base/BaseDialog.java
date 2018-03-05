@@ -8,5 +8,7 @@ import android.support.v4.app.DialogFragment;
 
 public class BaseDialog extends DialogFragment {
 
+    public void setData(Object... data) {
 
+    }
 }

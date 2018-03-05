@@ -32,5 +32,11 @@
     <string name="clock">Clock</string>
     <string name="time_picker_error_message">The time should be in the future!</string>
     <string name="date_picker_error_message">The chosen date should be current or future!</string>
+    <string name="warning_incorrect_date_to_do_details_fragment">Your date is previous than today!</string>
+    <string name="warning_incorrect_time_case_wrong_date_to_do_details_fragment">Can not set the time until date is correct!</string>
+    <string name="warning_incorrect_time_to_do_details_fragment">Set correct time!</string>
+    <string name="expire_to_do_notification_title">ToDo Expire Warning!</string>
+    <string name="expire_to_do_notification_content">%s expires after one hour!</string>
+    <string name="title_activity_main2">Main2Activity</string>
 
 </resources>

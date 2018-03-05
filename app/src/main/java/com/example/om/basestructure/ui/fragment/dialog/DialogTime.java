@@ -1,5 +1,6 @@
-package com.example.om.basestructure.ui.fragment;
+package com.example.om.basestructure.ui.fragment.dialog;
 
+import android.app.TimePickerDialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,9 +21,10 @@ import org.joda.time.LocalTime;
  * Created by android on 28.01.18.
  */
 
-public class DialogTime extends BaseDialog {
+public class DialogTime extends BaseDialog implements TimePickerDialog.OnTimeSetListener {
 
     public static final String FRAGMENT_TAG = DialogTime.class.getSimpleName();
+
 
     public enum TimeValidation {
         RESTRICT_PREVIOUS_TIME, RESTRICT_FUTURE_TIME, NO_TIME_RESTRICTIONS
@@ -32,6 +34,7 @@ public class DialogTime extends BaseDialog {
     private TimePicker mTimePicker;
     private Button mSetTimeBtn, mCancelTimeBtn;
     private TextView mTextViewValidationErrorMessage;
+    private String mCurrentTime;
 
     private View.OnClickListener mOnClickListenerDialogTime = new View.OnClickListener() {
         @Override
@@ -74,6 +77,12 @@ public class DialogTime extends BaseDialog {
         return view;
     }
 
+
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+    }
+
     private boolean isTimeValid(String time) {
         LocalTime currentTime = new LocalTime();
         LocalTime validationTime = new LocalTime(time);
@@ -85,4 +94,16 @@ public class DialogTime extends BaseDialog {
             return true;
         }
     }
+
+    @Override
+    public void setData(Object... data) {
+        if (data.length == 1) {
+            mTimeValidation = (DialogTime.TimeValidation) data[0];
+        } else if (data.length == 2) {
+            mTimeValidation = (DialogTime.TimeValidation) data[0];
+            mCurrentTime = (String) data[1];
+        }
+    }
+
+
 }
