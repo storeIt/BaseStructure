@@ -38,5 +38,8 @@
     <string name="expire_to_do_notification_title">ToDo Expire Warning!</string>
     <string name="expire_to_do_notification_content">%s expires after one hour!</string>
     <string name="title_activity_main2">Main2Activity</string>
+    <string name="dialog_calendar_title">Calendar</string>
+    <string name="dialog_location_title">Location</string>
+    <string name="dialog_time_title">Time</string>
 
 </resources>

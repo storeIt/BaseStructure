@@ -16,13 +16,14 @@ import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapActivity extends FragmentActivity {
 
     public static final String ADDRESS = "address";
     public static final String COORDINATES = "coordinates";
@@ -31,6 +32,25 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private Button mBtnSaveLocation;
     private Place mSelectedLocation;
     private LatLng mSelectedCoordinates;
+    private OnMapReadyCallback onMapReadyCallback = new OnMapReadyCallback() {
+        @Override
+        public void onMapReady(GoogleMap googleMap) {
+            mGoogleMap = googleMap;
+            if (mSelectedCoordinates != null) {
+                mGoogleMap.addMarker(new MarkerOptions().position(mSelectedCoordinates).title("ToDo destination"));
+                mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mSelectedCoordinates, 14.0f));
+            }
+            if (Build.VERSION.SDK_INT >= 23 &&
+                    ContextCompat.checkSelfPermission(MapActivity.this,
+                            android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                    ContextCompat.checkSelfPermission(MapActivity.this,
+                            android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            } else {
+                mGoogleMap.setMyLocationEnabled(true);
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +62,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         }
         mMapView = (MapView) findViewById(R.id.map_view_content_maps);
         mMapView.onCreate(savedInstanceState);
-        mMapView.getMapAsync(this);
+        mMapView.getMapAsync(onMapReadyCallback);
         mBtnSaveLocation = (Button) findViewById(R.id.btn_save_location_content_map);
         mBtnSaveLocation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +99,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 mGoogleMap.clear();
                 mGoogleMap.addMarker(new MarkerOptions().position(place.getLatLng())
                         .title("ToDo destination"));
+                mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(place.getLatLng(), 14.0f));
             }
 
             @Override
@@ -100,18 +121,18 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         mMapView.onPause();
     }
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mGoogleMap = googleMap;
-        if (mSelectedCoordinates != null) {
-            mGoogleMap.addMarker(new MarkerOptions().position(mSelectedCoordinates).title("ToDo destination"));
-        }
-        if (Build.VERSION.SDK_INT >= 23 &&
-                ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        } else {
-            mGoogleMap.setMyLocationEnabled(true);
-        }
-    }
+//    @Override
+//    public void onMapReady(GoogleMap googleMap) {
+//        mGoogleMap = googleMap;
+//        if (mSelectedCoordinates != null) {
+//            mGoogleMap.addMarker(new MarkerOptions().position(mSelectedCoordinates).title("ToDo destination"));
+//        }
+//        if (Build.VERSION.SDK_INT >= 23 &&
+//                ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+//                ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//            return;
+//        } else {
+//            mGoogleMap.setMyLocationEnabled(true);
+//        }
+//    }
 }

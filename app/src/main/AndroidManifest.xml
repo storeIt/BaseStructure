@@ -6,6 +6,7 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:name=".application.BaseStructureApplication"
@@ -41,6 +42,10 @@
             android:name=".ui.screen.MapActivity"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <service
+            android:name=".service.GeofenceNotificationService"
+            android:exported="false" />
     </application>
 
 </manifest>

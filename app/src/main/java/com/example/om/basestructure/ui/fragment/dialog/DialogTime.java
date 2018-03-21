@@ -4,6 +4,7 @@ import android.app.TimePickerDialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.TimePicker;
 import com.example.om.basestructure.R;
 import com.example.om.basestructure.ui.fragment.base.BaseDialog;
 import com.example.om.basestructure.ui.fragment.base.BaseFragment;
+import com.example.om.basestructure.utils.DateTimeUtils;
 
 import org.joda.time.LocalTime;
 
@@ -49,7 +51,7 @@ public class DialogTime extends BaseDialog implements TimePickerDialog.OnTimeSet
                     hour = mTimePicker.getCurrentHour();
                     minutes = mTimePicker.getCurrentMinute();
                 }
-                String time = hour + ":" + minutes;
+                String time = formatTime(hour, minutes);
                 if (isTimeValid(time)) {
                     ((BaseFragment) getTargetFragment()).setEndTime(time);
                     dismiss();
@@ -66,8 +68,21 @@ public class DialogTime extends BaseDialog implements TimePickerDialog.OnTimeSet
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
+        getDialog().setTitle(R.string.dialog_time_title);
         View view = inflater.inflate(R.layout.dialog_fragment_time_picker, container, false);
         mTimePicker = (TimePicker) view.findViewById(R.id.time_picker_dialog_fragment);
+        if (!TextUtils.isEmpty(mCurrentTime)) {
+            LocalTime time = DateTimeUtils.parseStringToTime(mCurrentTime);
+            int minutes = time.getMinuteOfHour();
+            int hour = time.getHourOfDay();
+            if (Build.VERSION.SDK_INT >= 23) {
+                mTimePicker.setHour(hour);
+                mTimePicker.setMinute(minutes);
+            } else {
+                mTimePicker.setCurrentHour(hour);
+                mTimePicker.setCurrentMinute(minutes);
+            }
+        }
         mTimePicker.setIs24HourView(Boolean.TRUE);
         mSetTimeBtn = (Button) view.findViewById(R.id.btn_set_time_dialog);
         mSetTimeBtn.setOnClickListener(mOnClickListenerDialogTime);
@@ -93,6 +108,24 @@ public class DialogTime extends BaseDialog implements TimePickerDialog.OnTimeSet
         } else {
             return true;
         }
+    }
+
+    private String formatTime(int hour, int minutes) {
+        String time;
+        String h;
+        String m;
+        if (hour < 10) {
+            h = "0" + hour;
+        } else {
+            h = Integer.toString(hour);
+        }
+        if (minutes < 10) {
+            m = "0" + minutes;
+        } else {
+            m = Integer.toString(minutes);
+        }
+        time = h + ":" + m;
+        return time;
     }
 
     @Override

@@ -18,7 +18,9 @@ public class LocationHelper {
         Geofence.Builder geofence = new Geofence.Builder();
         geofence
                 .setRequestId(id)
-                .setCircularRegion(latitude, longitude, radius);
+                .setCircularRegion(latitude, longitude, radius)
+                .setTransitionTypes(GeofencingRequest.INITIAL_TRIGGER_ENTER)
+                .setExpirationDuration(86400000);
         return geofence.build();
     }
 

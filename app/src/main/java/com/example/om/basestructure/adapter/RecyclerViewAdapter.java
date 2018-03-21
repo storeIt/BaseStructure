@@ -20,7 +20,7 @@ import java.util.List;
 public class RecyclerViewAdapter extends BaseRecyclerViewAdapter {
 
     private List<ToDo> mOriginItems;
-
+    private static final int TYPE_HEADER = 0;
 
     public RecyclerViewAdapter(List<ToDo> toDoList, ListItemClickListener listener) {
         super(listener);
