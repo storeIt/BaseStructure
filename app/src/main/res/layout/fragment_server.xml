@@ -1,0 +1,27 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.om.basestructure.ui.fragment.ServerFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <ProgressBar
+        android:id="@+id/progress_bar_fragment_server"
+        android:indeterminate="true"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_server_fragment_server"
+        android:text="Get server"
+        android:layout_gravity="bottom|center"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:layout_height="wrap_content" />
+
+
+</FrameLayout>
