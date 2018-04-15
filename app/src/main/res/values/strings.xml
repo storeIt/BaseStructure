@@ -16,7 +16,7 @@
     <string name="row_is_clicked">Row is clicked</string>
     <string name="fragment_unsaved_data">You have unsaved data, would you like to leave without saving?</string>
     <string name="to_do">To do</string>
-    <string name="category_overview">Overvue</string>
+    <string name="category_overview">Overview</string>
     <string name="hint_to_do">To Do</string>
     <string name="hint_to_do_description">Description</string>
     <string name="priority_string">Priority</string>
