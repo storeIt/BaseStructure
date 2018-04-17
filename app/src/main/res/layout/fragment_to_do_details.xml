@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?><!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content">-->
+
+<!--<LinearLayout--><!--android:id="@+id/buttons"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:layout_alignParentBottom="true">-->
+
+<!--<Button--><!--android:id="@+id/btn_save"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:background="@color/colorAccent"--><!--android:text="@string/save" />-->
+
+<!--</LinearLayout>-->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Overview category -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/CategoryStyle"
+                android:text="@string/category_overview" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="vertical"
+                android:paddingLeft="4dp">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/et_to_do_details_fragment"
+                        style="@style/EditorFieldStyle"
+                        android:hint="@string/hint_to_do"
+                        android:inputType="textCapWords" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/et_to_do_description_fragment_details"
+                        style="@style/EditorFieldStyle"
+                        android:hint="@string/hint_to_do_description"
+                        android:inputType="textCapWords" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/container_priority"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/priority_text_view"
+                style="@style/CategoryStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/priority_string" />
+
+            <RadioGroup
+                android:id="@+id/priority_radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <RadioButton
+                    android:id="@+id/radio_button_high"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/material_red"
+                    android:text="@string/high_priority"
+                    android:textColor="@color/colorWhite"
+                    android:theme="@style/WhiteRadioButton" />
+
+                <RadioButton
+                    android:id="@+id/radio_button_medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/material_orange"
+                    android:text="@string/medium_priority"
+                    android:textColor="@color/colorWhite"
+                    android:theme="@style/WhiteRadioButton" />
+
+                <RadioButton
+                    android:id="@+id/radio_button_low"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/material_yellow"
+                    android:checked="true"
+                    android:text="@string/low_priority"
+                    android:textColor="@color/colorWhite"
+                    android:theme="@style/WhiteRadioButton" />
+
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_warning_when_date_to_do_details_fragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/warning_incorrect_date_to_do_details_fragment"
+                android:textColor="@color/colorPrimaryLight"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/container_calendar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/fab_margin"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/when_text_view"
+                    style="@style/CategoryStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="@string/when_string" />
+
+                <LinearLayout
+                    android:id="@+id/layout_dp_when_to_do_details_fragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center">
+
+
+                    <TextView
+                        android:id="@+id/tv_when_date_to_do_details_fragment"
+                        style="@style/CategoryStyle"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:hint="@string/calendar"
+                        android:textColor="@color/colorPrimaryLight" />
+
+                    <ImageView
+                        android:id="@+id/iv_calendar"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@color/colorPrimary"
+                        android:src="@drawable/ic_action_calendar_day" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_warning_when_time_to_do_details_fragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/warning_incorrect_time_case_wrong_date_to_do_details_fragment"
+                android:textColor="@color/colorPrimaryLight"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/container_time_tododetailsfragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/fab_margin"
+                android:weightSum="3">
+
+                <TextView
+                    style="@style/CategoryStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_weight="1.22" />
+
+                <LinearLayout
+                    android:id="@+id/layout_tp_when_to_do_details_fragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.78"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tv_end_time_to_do_details_fragment"
+                        style="@style/CategoryStyle"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:hint="@string/clock"
+                        android:textColor="@color/colorPrimaryLight" />
+
+                    <ImageView
+                        android:id="@+id/iv_clock"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@color/colorPrimary"
+                        android:src="@drawable/ic_watch_later" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/switch_to_do_details_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send notification"
+            android:textColor="@color/colorAccent" />
+
+        <LinearLayout
+            android:id="@+id/container_gls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/fab_margin"
+            android:weightSum="3">
+
+            <TextView
+                android:id="@+id/where_text_view"
+                style="@style/CategoryStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="@string/where_string" />
+
+            <LinearLayout
+                android:id="@+id/layout_gls_where_to_do_details_fragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_gls"
+                    style="@style/CategoryStyle"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:text="@string/location"
+                    android:textColor="@color/colorPrimaryLight" />
+
+                <ImageView
+                    android:id="@+id/iv_gls"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@color/colorPrimary"
+                    android:src="@drawable/ic_action_location" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_save_to_do"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            android:background="@drawable/button"
+            android:text="@string/save"
+            android:textColor="@color/colorWhite" />
+    </LinearLayout>
+
+</ScrollView>
+
+
+
