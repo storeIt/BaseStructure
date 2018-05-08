@@ -28,7 +28,7 @@ android {
 dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     implementation 'com.android.support:appcompat-v7:25.3.1'
@@ -46,6 +46,6 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.2'
     implementation group: 'com.couchbase.lite', name: 'couchbase-lite-android', version: '1.4.0'
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.5.0'
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
 
 }
