@@ -37,23 +37,23 @@ public class MainActivity extends BaseActivity {
         super.onResume();
     }
 
-    @Override
-    public void onBackPressed() {
-        if (getSupportFragmentManager().getBackStackEntryCount() == 2 && isSomethingChanged) {
-            showAppDialog(new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    if (which == DialogInterface.BUTTON_POSITIVE) {
-                        finish();
-                    } else {
-                        dialog.dismiss();
-                    }
-                }
-            }, R.string.unsaved_changes_dialog, R.string.yes, R.string.no);
-        } else {
-            super.onBackPressed();
-        }
-    }
+//    @Override
+//    public void onBackPressed() {
+//        if (getSupportFragmentManager().getBackStackEntryCount() == 2 && isSomethingChanged) {
+//            showAppDialog(new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//                    if (which == DialogInterface.BUTTON_POSITIVE) {
+//                        finish();
+//                    } else {
+//                        dialog.dismiss();
+//                    }
+//                }
+//            }, R.string.unsaved_changes_dialog, R.string.yes, R.string.no);
+//        } else {
+//            super.onBackPressed();
+//        }
+//    }
 }
 
 

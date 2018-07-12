@@ -7,6 +7,8 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v4.app.ActivityCompat;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -111,6 +113,7 @@ public class ToDoDetailsFragment extends BaseFragment {
                 case R.id.btn_save_to_do:
                     //  getServer();
                     onSaveToDo();
+                    //getToDoDetailsAsync();
                     break;
             }
         }
@@ -395,4 +398,24 @@ public class ToDoDetailsFragment extends BaseFragment {
                 });
     }
 
+    private void getToDoDetailsAsync(){
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Handler handler = new Handler(Looper.getMainLooper());
+                Runnable runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        mDescription.setText("Text ready");
+                    }
+                };
+                handler.post(runnable);
+
+            }
+        });
+        thread.start();
+
+
+    }
 }
+
